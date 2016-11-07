@@ -26,3 +26,6 @@ bin/rake db:setup
 
 # Clean log files and tmp directory
 bin/rake log:clear tmp:clear
+
+# Install all dependencies
+npm install --ignore-scripts

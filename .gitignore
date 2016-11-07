@@ -12,3 +12,6 @@ vendor/ruby
 ._*
 .env
 .pryrc
+# Added by webpack-rails
+/node_modules
+/public/webpack
