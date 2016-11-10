@@ -1,0 +1,30 @@
+.row
+  .columns
+    h2 = title("New Company")
+
+= simple_form_for company do |f|
+  .form-inputs
+    .row
+      .medium-6.columns
+        = f.input :title, autofocus: true
+    .row
+      .medium-6.columns
+        = f.input :subdomain
+    = f.fields_for :owner do |o_f|
+      .form-inputs
+        .row
+          .medium-6.columns
+            = o_f.input :full_name
+        .row
+          .medium-6.columns
+            = o_f.input :email
+        .row
+          .medium-6.columns
+            = o_f.input :password, autocomplete: "off"
+        .row
+          .medium-6.columns
+            = o_f.input :password_confirmation
+  .form-actions
+    .row
+      .medium-6.columns
+        = f.submit class: "button"

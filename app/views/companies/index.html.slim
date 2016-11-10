@@ -1,0 +1,14 @@
+.row
+  .medium-offset-2.medium-8.columns
+    - companies.each do |company|
+      .row
+        .medium-12.columns
+          | Company:
+          '
+          = link_to company.title, root_url(subdomain: company.subdomain), target: :_blank
+        .medium-12.columns
+          | Owner:
+          '
+          strong = company.owner.full_name
+  .medium-2.columns
+    = link_to "New Company", new_company_path
