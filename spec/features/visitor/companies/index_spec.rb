@@ -11,6 +11,7 @@ feature "Companies Index" do
     companies.each(&method(:expect_to_have_company_data))
   end
 
+  # rubocop:disable AbcSize
   def expect_to_have_company_data(company)
     within ".company-item[data-id='#{company.id}']" do
       expect(page).to have_content(company.title)
@@ -18,4 +19,5 @@ feature "Companies Index" do
       expect(page).to have_content(company.owner.full_name)
     end
   end
+  # rubocop:enable AbcSize
 end

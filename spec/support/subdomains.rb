@@ -8,7 +8,7 @@ def switch_to_main_domain
   switch_to_subdomain nil
 end
 
-RSpec.configure do |config|
+RSpec.configure do |_config|
   switch_to_main_domain
 end
 

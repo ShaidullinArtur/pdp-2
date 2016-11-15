@@ -1,10 +1,12 @@
 require "rails_helper"
 
 feature "Update Account" do
-  include_context "current user signed in"
+  include_context "company user signed in"
 
   background do
-    visit edit_user_registration_path(current_user)
+    switch_to_subdomain(company.subdomain)
+
+    visit edit_user_registration_path
   end
 
   scenario "User updates account with valid data" do

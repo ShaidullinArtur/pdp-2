@@ -10,10 +10,6 @@ module Authorization
   private
 
   def user_not_authorized
-    redirect_to(root_path)
-  end
-
-  def user_not_authorized
     if request.xhr?
       render json: { error: I18n.t("common.error_messages.access_denied") }, status: 404
     else
