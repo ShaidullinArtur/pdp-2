@@ -27,7 +27,6 @@ feature "New Company" do
       click_on "Create Company"
     end
 
-    expect(current_url).to eq(root_url(subdomain: new_company_attributes[:subdomain]))
     expect(page).to have_content(new_company_attributes[:title])
     expect(page).to have_content(new_company_attributes[:owner_full_name])
   end
