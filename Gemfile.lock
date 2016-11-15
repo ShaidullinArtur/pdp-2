@@ -69,6 +69,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.14)
+      capybara (>= 1.0, < 3)
+      launchy
     capybara-webkit (1.11.1)
       capybara (>= 2.3.0, < 2.8.0)
       json
@@ -378,6 +381,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  capybara-screenshot
   capybara-webkit
   codeclimate-test-reporter
   database_cleaner
