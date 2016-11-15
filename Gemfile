@@ -7,13 +7,10 @@ gem "pg"
 
 # assets
 gem "autoprefixer-rails"
-gem "coffee-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails"
-gem "jquery-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0"
-gem "skim"
 gem "therubyracer", platforms: :ruby
 gem "uglifier", ">= 2.7.2"
 gem "webpack-rails"
@@ -53,6 +50,7 @@ end
 group :test do
   gem "capybara"
   gem "capybara-webkit"
+  gem "capybara-screenshot"
   gem "codeclimate-test-reporter", require: false
   gem "database_cleaner"
   gem "email_spec"
@@ -68,7 +66,6 @@ group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "coffeelint"
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "faker"

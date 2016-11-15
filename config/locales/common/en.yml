@@ -1,0 +1,5 @@
+en:
+  common:
+    error_messages:
+      access_denied: You do not have access to the requested action!
+      record_not_found: Nothing found

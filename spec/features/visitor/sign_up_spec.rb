@@ -1,10 +1,13 @@
 require "rails_helper"
 
 feature "Sign Up" do
+  let!(:company) { create :company, :with_owner }
   let(:user_attributes) { attributes_for(:user).slice(:full_name, :email, :password, :password_confirmation) }
   let(:registered_user) { User.find_by_email(user_attributes[:email]) }
 
   scenario "Visitor signs up" do
+    switch_to_subdomain(company.subdomain)
+
     visit new_user_registration_path
 
     fill_form(:user, user_attributes)
