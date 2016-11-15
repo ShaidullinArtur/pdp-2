@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, if: :password_required?
   validates :password, length: Devise.password_length, allow_blank: true
 
-  has_one :my_company, dependent: :destroy
-  has_one :company, foreign_key: :subdomain
+  has_one :my_company, class_name: Company, dependent: :destroy
+  has_one :company, foreign_key: :subdomain, primary_key: :subdomain
 
   def self.find_for_authentication(warden_conditions)
     find_by(email: warden_conditions[:email], subdomain: warden_conditions[:subdomain])
