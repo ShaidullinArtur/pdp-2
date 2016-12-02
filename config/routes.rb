@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: "users/registrations" }
 
     scope module: :companies do
-      match "/", to: "dashboard#show", via: :get
+      match "/", to: "posts#index", via: :get
       resource :settings, only: %i(show update)
+      resources :posts
     end
   end
 
