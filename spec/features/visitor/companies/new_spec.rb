@@ -26,6 +26,7 @@ feature "New Company" do
     expect(page).to have_content(new_company_attributes[:owner_full_name])
   end
 
+  # rubocop:disable AbcSize
   def create_new_company
     click_on "New Company"
 
@@ -40,6 +41,7 @@ feature "New Company" do
       click_on "Create Company"
     end
   end
+  # rubocop:enable AbcSize
 
   def sign_in_as_company_owner
     User.last.confirm

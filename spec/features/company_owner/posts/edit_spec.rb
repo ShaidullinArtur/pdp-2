@@ -52,10 +52,8 @@ feature "Edit Company Posts" do
     expect_to_have_new_post_data
   end
 
-  # rubocop:disable AbcSize
   def expect_to_have_new_post_data
     expect(page).to have_content(new_post_title)
     expect(page).to have_content(new_post_text)
   end
-  # rubocop:enable AbcSize
 end
