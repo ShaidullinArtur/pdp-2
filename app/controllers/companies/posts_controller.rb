@@ -12,7 +12,7 @@ module Companies
     end
 
     def create
-      authorize post, :manage?
+      authorize post, :create?
       post.author = current_user
       post.save
       respond_with post
