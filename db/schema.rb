@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109232617) do
+ActiveRecord::Schema.define(version: 20161117213923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20161109232617) do
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.string   "title",                    null: false
+    t.text     "text",                     null: false
+    t.float    "rating",     default: 0.0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "posts", ["company_id"], name: "index_posts_on_company_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -52,4 +65,6 @@ ActiveRecord::Schema.define(version: 20161109232617) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "companies", "users"
+  add_foreign_key "posts", "companies"
+  add_foreign_key "posts", "users"
 end

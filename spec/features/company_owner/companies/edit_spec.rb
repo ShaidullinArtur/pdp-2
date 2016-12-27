@@ -22,7 +22,6 @@ feature "Edit Self Company" do
       click_on "Update Company"
     end
 
-    expect(page).to have_content(new_company_title)
     expect(page).to have_content(success_update_notice_text)
   end
 end

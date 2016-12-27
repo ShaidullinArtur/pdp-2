@@ -1,0 +1,22 @@
+.callout.large.primary
+  .row.column.text-center
+    h1 = post.title
+    h4.subheader
+      p Posted by: #{post.author.full_name}
+      p Current rating: #{post.rating}
+.row.medium-8.large-7.columns
+  .post-details
+    = post.text
+    - if policy(post).manage?
+      .medium-offset-8.medium-4.columns
+        .button-group
+          = link_to "Edit", edit_post_path(post), class: "small button"
+          = link_to "Destroy", post_path(post), method: :delete,
+            data: { confirm: "Are you sure?" }, class: "small alert button"
+  .comments
+    .row
+      .medium-offset-5.columns
+        p Comments
+    .row
+       .comments-item
+         = post.text

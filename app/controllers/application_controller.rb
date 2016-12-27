@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def signed_in_root_path(resource)
     root_url(resource.subdomain)
   end
+
+  def serialize(resource, options = {})
+    ActiveModelSerializers::SerializableResource.new(resource, options)
+  end
 end
