@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     scope module: :companies do
       match "/", to: "posts#index", via: :get
       resource :settings, only: %i(show update)
-      resources :posts
+      resources :posts do
+        resources :comments, only: %i(index create update destroy), module: :posts
+      end
     end
   end
 

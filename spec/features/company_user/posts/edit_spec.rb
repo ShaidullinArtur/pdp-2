@@ -6,7 +6,7 @@ feature "Edit Company Posts" do
   let!(:company_owner_post) { create(:post, company: company, author: company.owner) }
   let!(:company_member_post) { create(:post, company: company, author: company_member) }
 
-  let(:post_details_selector) { ".post-details" }
+  let(:post_details_selector) { ".post-box" }
   let(:post_form_selector) { ".edit_post" }
   let(:new_post_title) { "Super Post Title" }
   let(:new_post_text) { "Super Post Text" }

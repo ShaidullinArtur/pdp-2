@@ -1,16 +1,16 @@
 require "rails_helper"
 
-feature "Destroy Company Posts" do
+feature "Create Company Post Comments", js: true do
   let!(:company) { create(:company, :with_owner) }
   let!(:post) { create(:post, company: company, author: company.owner) }
 
-  let(:post_details_selector) { ".post-box" }
+  let(:comment_form_selector) { ".comments-form" }
 
-  scenario "Visitor can't delete company post" do
+  scenario "Visitor creates company post comment" do
     switch_to_subdomain(company.subdomain)
 
     visit post_path(post)
 
-    expect(post_details_selector).not_to have_content("Destroy")
+    expect(page).not_to have_selector(comment_form_selector)
   end
 end

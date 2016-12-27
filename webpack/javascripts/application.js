@@ -1,15 +1,10 @@
 import "script!jquery";
 import "jquery-ujs";
 import "script!foundation-sites";
-import App from "app";
-import React from "react";
-import ReactDOM from "react-dom";
-import HelloWorld from "./hello_world";
+import Initializer from "./initializer";
+import "./initializers/all";
 
-console.log("Hello world!", App);
-
-if(document.getElementById("hello_world")) {
-  ReactDOM.render(<HelloWorld/>, document.getElementById("hello_world"));
-}
-
-$(document).foundation()
+$(function() {
+  $(document).foundation();
+  Initializer.initialize();
+});
