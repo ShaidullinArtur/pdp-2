@@ -8,7 +8,6 @@ feature "Edit Company Post Comments", js: true do
 
   let(:comment_selector) { ".post-comments-item" }
 
-
   scenario "Visitor updates company member comment" do
     switch_to_subdomain(company.subdomain)
 

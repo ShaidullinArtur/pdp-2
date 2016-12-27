@@ -21,12 +21,10 @@ feature "Company Post Comments Index", js: true do
     comments.each(&method(:expect_to_have_comment_data))
   end
 
-  # rubocop:disable AbcSize
   def expect_to_have_comment_data(comment)
     within comment_selector, text: comment.text do
       expect(page).to have_content(comment.text)
       expect(page).to have_content(comment.author.full_name)
     end
   end
-  # rubocop:enable AbcSize
 end
