@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Destroy Company Posts" do
+feature "Destroy Company Posts", js: true do
   let!(:company) { create(:company, :with_owner) }
   let!(:company_member) { create(:user, subdomain: company.subdomain) }
   let!(:company_owner_post) { create(:post, company: company, author: company.owner) }
