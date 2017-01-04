@@ -2,6 +2,9 @@ module Companies
   class PostsController < BaseController
     expose(:posts, -> { current_company.posts.includes(:author).order(created_at: :desc) })
     expose(:post, parent: :current_company)
+    expose(:comments, from: :post)
+
+    helper_method :serialized_post, :serialized_comments
 
     before_action :authenticate_user!, only: %i(new create edit update destroy)
 
@@ -41,6 +44,14 @@ module Companies
 
     def post_params
       params.require(:post).permit(:title, :text)
+    end
+
+    def serialized_post
+      serialize(post)
+    end
+
+    def serialized_comments
+      serialize(comments.includes(:author).order(created_at: :desc).page(1))
     end
   end
 end

@@ -4,7 +4,6 @@ feature "Create Company Posts" do
   let!(:company) { create(:company, :with_owner) }
   let!(:current_user) { company.owner }
 
-  let(:dropdown_menu_selector) { ".top-bar-right.menu" }
   let(:post_form_selector) { "#new_post" }
   let(:new_post_title) { "Super Post Title" }
   let(:new_post_text) { "Super Post Text" }
@@ -14,13 +13,10 @@ feature "Create Company Posts" do
     login_as current_user
   end
 
-  scenario "Company owner creates company post" do
+  scenario "Company owner creates company post", js: true do
     switch_to_subdomain(company.subdomain)
 
-    visit root_path
-
-    find(dropdown_menu_selector).click
-    click_on "Create post"
+    visit new_post_path
 
     within post_form_selector do
       fill_in :post_title, with: new_post_title
@@ -38,7 +34,6 @@ feature "Create Company Posts" do
     expect(page).to have_content(new_post_title)
     expect(page).to have_content(new_post_text)
     expect(page).to have_content(current_user.full_name)
-    expect(page).to have_content(0.0)
   end
   # rubocop:enable AbcSize
 end

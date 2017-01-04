@@ -1,12 +1,12 @@
 require "rails_helper"
 
-feature "Destroy Company Posts" do
+feature "Destroy Company Posts", js: true do
   let!(:company) { create(:company, :with_owner) }
   let!(:company_member) { create(:user, subdomain: company.subdomain) }
   let!(:company_owner_post) { create(:post, company: company, author: company.owner) }
   let!(:company_member_post) { create(:post, company: company, author: company_member) }
 
-  let(:post_details_selector) { ".post-details" }
+  let(:post_details_selector) { ".post-box" }
   let(:post_selector) { ".blog-post" }
   let(:success_destroy_post_text) { "Post was successfully destroyed." }
 
