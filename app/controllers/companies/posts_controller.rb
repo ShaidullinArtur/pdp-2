@@ -47,7 +47,11 @@ module Companies
     end
 
     def serialized_post
-      serialize(post)
+      if current_user.present?
+        serialize(post, serializer: UserPostSerializer, scope: current_user, scope_name: :current_user)
+      else
+        serialize(post)
+      end
     end
 
     def serialized_comments

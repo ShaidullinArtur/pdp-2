@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205135702) do
+ActiveRecord::Schema.define(version: 20170104130649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20161205135702) do
   add_index "posts", ["company_id"], name: "index_posts_on_company_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "post_id",                  null: false
+    t.integer  "user_id",                  null: false
+    t.float    "value",      default: 0.0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "ratings", ["post_id"], name: "index_ratings_on_post_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -79,4 +90,6 @@ ActiveRecord::Schema.define(version: 20161205135702) do
   add_foreign_key "companies", "users"
   add_foreign_key "posts", "companies"
   add_foreign_key "posts", "users"
+  add_foreign_key "ratings", "posts"
+  add_foreign_key "ratings", "users"
 end
