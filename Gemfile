@@ -7,6 +7,7 @@ gem "pg"
 
 # assets
 gem "autoprefixer-rails"
+gem "font-awesome-sass"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails"
 gem "premailer-rails"

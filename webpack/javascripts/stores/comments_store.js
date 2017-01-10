@@ -5,9 +5,9 @@ import { findIndex } from "lodash";
 
 class CommentsStore {
   constructor() {
-    this.comments = App.commentsData;
+    this.comments = App.commentsData || [];
     this.page = 1;
-    this.lastPage = false;
+    this.lastPage = this.comments.length == 0;
     this.loading = false;
 
     this.bindListeners({
