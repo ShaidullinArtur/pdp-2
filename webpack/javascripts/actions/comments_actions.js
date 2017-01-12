@@ -1,6 +1,6 @@
 import alt from "fluxer";
 import qwest from "qwest";
-import authenticityToken from "utils/authenticityToken";
+import authenticityToken from "utils/authenticity_token";
 
 class CommentsActions {
   startLoading() {

@@ -1,6 +1,6 @@
 module Companies
   class PostsController < BaseController
-    expose(:posts, -> { current_company.posts.includes(:author).order(created_at: :desc) })
+    expose(:posts, -> { current_company.posts.includes(:author).order(created_at: :desc).page(params[:page]) })
     expose(:post, parent: :current_company)
     expose(:comments, from: :post)
 

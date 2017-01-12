@@ -8,7 +8,7 @@ module Companies
 
       def update
         rating.update(rating_params)
-        post.update(rating: post.ratings.average(:value).round(1).to_f)
+        RefreshPostRating.call(post: post)
         render json: post
       end
 

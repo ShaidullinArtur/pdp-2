@@ -2,14 +2,9 @@ require "rails_helper"
 
 feature "Company Posts Index " do
   let!(:company) { create(:company, :with_owner) }
-  let!(:posts) { create_list(:post, 2, company: company, author: current_user) }
+  let!(:posts) { create_list(:post, 2, company: company, author: company.owner) }
 
-  let(:current_user) { company.owner }
   let(:post_selector) { ".blog-post" }
-
-  background do
-    login_as current_user
-  end
 
   scenario "Visitor sees posts list" do
     switch_to_subdomain(company.subdomain)

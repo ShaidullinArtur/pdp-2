@@ -2,11 +2,14 @@ require "rails_helper"
 
 feature "Company Posts Index " do
   let!(:company) { create(:company, :with_owner) }
+  let!(:company_member) { create(:user, subdomain: company.subdomain) }
   let!(:posts) { create_list(:post, 2, company: company, author: company.owner) }
 
   let(:post_selector) { ".blog-post" }
 
-  scenario "Visitor sees posts list" do
+  background { login_as company_member }
+
+  scenario "Company user sees posts list" do
     switch_to_subdomain(company.subdomain)
 
     visit root_path
