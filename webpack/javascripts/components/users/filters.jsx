@@ -50,7 +50,7 @@ class CompanyUsersFilters extends React.Component {
             value={this.state.sort}
             onChange={this.handleSelectChange.bind(this, "sort")} >
             <option value="">Sorting</option>
-            <option value="-average_rating">Average Rating</option>
+            <option value="-average_rating,-posts_count">Average Rating</option>
             <option value="-posts_count,-average_rating">Posts Count</option>
           </select>
         </div>

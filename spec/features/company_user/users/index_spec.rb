@@ -15,7 +15,7 @@ feature "Company Users Index", js: true do
     ]
   end
   let(:users_filtered_by_min_rating) { [users[0], users[1], users[2], users[3]] }
-  let(:users_sortered_by_average_rating) { [users[0], users[2], users[3], users[1], users[4]] }
+  let(:users_sortered_by_average_rating) { [users[0], users[3], users[2], users[1], users[4]] }
   let(:users_sortered_by_posts_count) { [users[4], users[3], users[1], users[2], users[0]] }
   let(:users_filtered_by_search) { [users[2], users[4]] }
 
