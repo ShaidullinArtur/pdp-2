@@ -39,8 +39,8 @@ describe FilteredUsersQuery do
     context "when users filtered by pagination" do
       let!(:users) { create_list(:user, 15) }
 
-      let(:params) { { page: 1 } }
-      let(:filtered_users) { users[0..9] }
+      let(:params) { { sort: "id", page: 1 } }
+      let(:filtered_users) { User.limit(10) }
 
       it { is_expected.to match_array(filtered_users) }
     end
