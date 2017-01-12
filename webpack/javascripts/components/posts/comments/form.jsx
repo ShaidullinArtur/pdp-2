@@ -35,6 +35,7 @@ class CommentForm extends React.Component {
             id="comment_text"
             className="comments-text"
             placeholder="Comment Text"
+            rows="5"
             onChange={this.onChange.bind(this)}
             value={this.state.text} />
         </label>

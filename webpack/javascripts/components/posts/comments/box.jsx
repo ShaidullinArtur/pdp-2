@@ -4,7 +4,7 @@ import CommentsStore from "stores/comments_store";
 import CommentsActions from "actions/comments_actions";
 import CommentForm from "./form";
 import CommentsList from "./list";
-import LoadMoreButton from "./load_more";
+import LoadMoreButton from "components/shared/load_more_button";
 
 @connectToStores
 class CommentsBox extends React.Component {

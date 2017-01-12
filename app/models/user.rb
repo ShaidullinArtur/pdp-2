@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PgSearch
+
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, request_keys: { subdomain: false }
 
@@ -11,6 +13,15 @@ class User < ActiveRecord::Base
 
   has_one :my_company, class_name: Company, dependent: :destroy
   has_one :company, foreign_key: :subdomain, primary_key: :subdomain
+
+  has_many :posts
+
+  pg_search_scope :search,
+    against: [
+      [:full_name, "A"],
+      [:email, "A"]
+    ],
+    using: { tsearch: { prefix: true } }
 
   def self.find_for_authentication(warden_conditions)
     find_by(email: warden_conditions[:email], subdomain: warden_conditions[:subdomain])

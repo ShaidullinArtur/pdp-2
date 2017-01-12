@@ -13,7 +13,7 @@ feature "Create Company Posts" do
     login_as current_user
   end
 
-  scenario "Company owner creates company post", js: true do
+  scenario "Company user creates company post", js: true do
     switch_to_subdomain(company.subdomain)
 
     visit new_post_path

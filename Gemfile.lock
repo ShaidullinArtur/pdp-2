@@ -202,6 +202,10 @@ GEM
     parser (2.3.1.2)
       ast (~> 2.2)
     pg (0.17.1)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     phantomjs (1.9.8.0)
     powerpack (0.1.1)
     premailer (1.8.7)
@@ -425,6 +429,7 @@ DEPENDENCIES
   metamagic
   newrelic_rpm
   pg
+  pg_search
   premailer-rails
   pry-rails
   puma
@@ -462,4 +467,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.3
+   1.13.7
