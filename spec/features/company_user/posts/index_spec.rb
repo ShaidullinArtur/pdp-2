@@ -7,7 +7,7 @@ feature "Company Posts Index " do
 
   let(:post_selector) { ".blog-post" }
 
-  background { login_as company_member }
+  background { login_as company_member, scope: :user }
 
   scenario "Company user sees posts list" do
     switch_to_subdomain(company.subdomain)

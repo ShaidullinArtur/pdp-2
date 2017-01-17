@@ -8,7 +8,7 @@ feature "Company Posts Index " do
   let(:post_selector) { ".blog-post" }
 
   background do
-    login_as current_user
+    login_as current_user, scope: :user
   end
 
   scenario "Company owner sees posts list" do

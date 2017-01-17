@@ -12,7 +12,7 @@ feature "Post Ratings", js: true do
   let(:inactive_star_selector) { ".fa.fa-lg.fa-star-o" }
 
   background do
-    login_as company_member
+    login_as company_member, scope: :user
     switch_to_subdomain(company.subdomain)
   end
 

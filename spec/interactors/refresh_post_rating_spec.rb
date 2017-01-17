@@ -18,6 +18,6 @@ describe RefreshPostRating do
   end
 
   it "recalculate post author average rating" do
-    expect { subject }.to change { post.author.average_rating }.from(0).to(1.5)
+    expect { subject }.to change { post.author.average_rating }.to(1.5)
   end
 end

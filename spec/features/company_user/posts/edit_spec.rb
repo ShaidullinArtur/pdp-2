@@ -13,7 +13,7 @@ feature "Edit Company Posts", js: true do
   let(:success_update_post_text) { "Post was successfully updated." }
 
   background do
-    login_as company_member
+    login_as company_member, scope: :user
     switch_to_subdomain(company.subdomain)
   end
 

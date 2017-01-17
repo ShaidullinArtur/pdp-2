@@ -11,7 +11,7 @@ feature "Destroy Company Posts", js: true do
   let(:success_destroy_post_text) { "Post was successfully destroyed." }
 
   background do
-    login_as company_owner
+    login_as company_owner, scope: :user
     switch_to_subdomain(company.subdomain)
   end
 

@@ -23,7 +23,7 @@ feature "Company Users Index", js: true do
   let(:user_selector) { ".company-users-item" }
 
   background do
-    login_as company_member
+    login_as company_member, scope: :user
     switch_to_subdomain(subdomain)
 
     visit users_path

@@ -10,7 +10,7 @@ feature "Create Company Posts" do
   let(:success_create_post_text) { "Post was successfully created." }
 
   background do
-    login_as current_user
+    login_as current_user, scope: :user
   end
 
   scenario "Company user creates company post", js: true do
