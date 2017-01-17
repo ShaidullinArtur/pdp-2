@@ -25,10 +25,12 @@ gem "slim"
 
 # all other gems
 gem "active_model_serializers"
+gem "activeadmin", git: "https://github.com/activeadmin/activeadmin"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
+gem "enumerize"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"

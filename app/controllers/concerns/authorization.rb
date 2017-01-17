@@ -7,9 +7,9 @@ module Authorization
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   end
 
-  private
+  protected
 
-  def user_not_authorized
+  def user_not_authorized(_)
     if request.xhr?
       render json: { error: I18n.t("common.error_messages.access_denied") }, status: 404
     else

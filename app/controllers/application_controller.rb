@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   def after_sign_in_path_for(resource)
-    root_url(resource.subdomain)
+    resource.is_a?(AdminUser) ? admin_root_path : root_url(resource.subdomain)
   end
 
   def signed_in_root_path(resource)
