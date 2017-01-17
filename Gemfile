@@ -25,10 +25,12 @@ gem "slim"
 
 # all other gems
 gem "active_model_serializers"
+gem "activeadmin", git: "https://github.com/activeadmin/activeadmin"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
+gem "enumerize"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
@@ -48,6 +50,11 @@ gem "stackprof"
 group :staging, :production do
   gem "newrelic_rpm"
   gem "rails_stdout_logging"
+end
+
+group :development, :test, :staging do
+  gem "factory_girl_rails"
+  gem "faker"
 end
 
 group :test do
@@ -70,8 +77,6 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "byebug"
   gem "dotenv-rails"
-  gem "factory_girl_rails"
-  gem "faker"
   gem "jasmine", "> 2.0"
   gem "jasmine-jquery-rails"
   gem "pry-rails"

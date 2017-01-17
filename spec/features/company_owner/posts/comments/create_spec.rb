@@ -10,7 +10,7 @@ feature "Create Company Post Comments", js: true do
   let(:new_comment_text) { "Super Post Text" }
 
   background do
-    login_as current_user
+    login_as current_user, scope: :user
   end
 
   scenario "Company owner creates company post comment" do

@@ -13,7 +13,7 @@ feature "Edit Company Posts", js: true do
   let(:success_update_post_text) { "Post was successfully updated." }
 
   background do
-    login_as company_owner
+    login_as company_owner, scope: :user
   end
 
   scenario "Company owner updates self post" do

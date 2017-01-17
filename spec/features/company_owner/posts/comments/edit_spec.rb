@@ -13,7 +13,7 @@ feature "Edit Company Post Comments", js: true do
   let(:new_comment_text) { "Super Comment Text" }
 
   background do
-    login_as company_owner
+    login_as company_owner, scope: :user
     switch_to_subdomain(company.subdomain)
   end
 

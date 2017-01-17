@@ -9,7 +9,7 @@ feature "Company Post Comments Index", js: true do
   let(:comment_selector) { ".post-comments-item" }
 
   background do
-    login_as company_owner
+    login_as company_owner, scope: :user
   end
 
   scenario "Company owner sees post comments list" do

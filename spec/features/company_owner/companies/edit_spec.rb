@@ -8,7 +8,7 @@ feature "Edit Self Company" do
   let(:success_update_notice_text) { "Company was successfully updated." }
 
   background do
-    login_as current_user
+    login_as current_user, scope: :user
   end
 
   scenario "Owner update company" do

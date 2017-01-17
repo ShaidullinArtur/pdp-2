@@ -11,7 +11,7 @@ feature "Destroy Company Post Comments", js: true do
   let(:comment_selector) { ".post-comments-item" }
 
   background do
-    login_as company_owner
+    login_as company_owner, scope: :user
     switch_to_subdomain(company.subdomain)
   end
 
