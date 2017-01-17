@@ -7,4 +7,5 @@ class Post < ActiveRecord::Base
 
   validates :title, :author, :company, :text, presence: true
   validates :title, uniqueness: { scope: :company_id }
+  validates :rating, inclusion: 1..5
 end
