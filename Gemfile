@@ -52,6 +52,11 @@ group :staging, :production do
   gem "rails_stdout_logging"
 end
 
+group :development, :test, :staging do
+  gem "factory_girl_rails"
+  gem "faker"
+end
+
 group :test do
   gem "capybara"
   gem "capybara-webkit"
@@ -72,8 +77,6 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "byebug"
   gem "dotenv-rails"
-  gem "factory_girl_rails"
-  gem "faker"
   gem "jasmine", "> 2.0"
   gem "jasmine-jquery-rails"
   gem "pry-rails"

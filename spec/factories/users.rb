@@ -5,6 +5,7 @@ FactoryGirl.define do
     password "123123123"
     password_confirmation { password }
     confirmed_at 1.hour.ago
+    average_rating { Faker::Number.between(1, 5) }
 
     trait :not_confirmed do
       confirmed_at nil
