@@ -7,7 +7,9 @@ feature "Post Ratings", js: true do
   let!(:post) { create(:post, company: company, author: post_author, rating: 1.5) }
 
   let(:post_details_selector) { ".post-box" }
-  let(:stars_selector) { ".star-rating" }
+  let(:post_current_rating_selector) { ".post-current-rating" }
+  let(:post_user_rating_selector) { ".post-user-rating" }
+  let(:star_selector) { ".star-rating .fa.fa-lg" }
   let(:active_star_selector) { ".fa.fa-lg.fa-star" }
   let(:inactive_star_selector) { ".fa.fa-lg.fa-star-o" }
 
@@ -22,7 +24,7 @@ feature "Post Ratings", js: true do
     scenario "Company user can't set post rating" do
       visit post_path(post)
 
-      expect(post_details_selector).not_to have_selector(stars_selector)
+      expect(post_details_selector).not_to have_selector(post_user_rating_selector)
     end
   end
 
@@ -34,20 +36,28 @@ feature "Post Ratings", js: true do
     scenario "Company user set post rating" do
       visit post_path(post)
 
-      expect(page).to have_content("Current rating: 1.5")
+      within post_current_rating_selector do
+        expect(page).to have_content("Current rating:")
+        expect(page).to have_selector(active_star_selector, count: 1)
+        expect(page).to have_selector(inactive_star_selector, count: 4)
+      end
 
-      within stars_selector do
+      within post_user_rating_selector do
+        expect(page).to have_selector(active_star_selector, count: 2)
+        expect(page).to have_selector(inactive_star_selector, count: 3)
+
+        all(star_selector)[2].trigger("click")
+      end
+
+      within post_current_rating_selector do
+        expect(page).to have_content("Current rating:")
         expect(page).to have_selector(active_star_selector, count: 2)
         expect(page).to have_selector(inactive_star_selector, count: 3)
       end
 
-      first(active_star_selector).trigger("click")
-
-      expect(page).to have_content("Current rating: 1")
-
-      within stars_selector do
-        expect(page).to have_selector(active_star_selector, count: 1)
-        expect(page).to have_selector(inactive_star_selector, count: 4)
+      within post_user_rating_selector do
+        expect(page).to have_selector(active_star_selector, count: 3)
+        expect(page).to have_selector(inactive_star_selector, count: 2)
       end
     end
   end
