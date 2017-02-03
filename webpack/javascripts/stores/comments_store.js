@@ -7,7 +7,7 @@ class CommentsStore {
   constructor() {
     this.comments = App.commentsData || [];
     this.page = 1;
-    this.lastPage = this.comments.length == 0;
+    this.lastPage = this.comments.length < 25;
     this.loading = false;
 
     this.bindListeners({
@@ -22,7 +22,7 @@ class CommentsStore {
   append(comments) {
     this.loading = false;
     this.page += 1;
-    this.lastPage = comments.length == 0;
+    this.lastPage = comments.length < 25;
     this.comments = this.comments.concat(comments);
   }
 

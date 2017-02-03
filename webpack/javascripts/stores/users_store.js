@@ -6,7 +6,7 @@ import UsersActions from "actions/users_actions";
 class UsersStore {
   constructor() {
     this.users = App.usersData || [];
-    this.lastPage = this.users.length == 0;
+    this.lastPage = this.users.length < 25;
     this.loading = false;
     this.params = { page: 1, search: "", sort: "" };
 
@@ -20,7 +20,7 @@ class UsersStore {
   append(data) {
     this.params = data.params;
     this.loading = false;
-    this.lastPage = data.users.length == 0;
+    this.lastPage = data.users.length < 25;
     this.users = this.users.concat(data.users);
   }
 

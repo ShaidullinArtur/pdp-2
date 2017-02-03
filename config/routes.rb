@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: %w(index new create)
 
-  constraints(Subdomain) do
+  constraints(-> (request) { request.subdomain.to_s.match(Company::SUBDOMAIN_REGEXP) }) do
     devise_for :users, controllers: { registrations: "users/registrations" }
 
     scope module: :companies do

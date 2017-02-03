@@ -32,6 +32,7 @@ class CompanyUsersBox extends React.Component {
         <List collection={this.props.users}/>
         <br/>
         <LoadMoreButton
+          buttonText="Load more users"
           lastPage={this.props.lastPage}
           loading={this.props.loading}
           onClick={this.loadUsers.bind(this)} />

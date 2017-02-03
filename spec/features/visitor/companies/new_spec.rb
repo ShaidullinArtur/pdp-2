@@ -1,12 +1,12 @@
 require "rails_helper"
 
 feature "New Company" do
-  let(:new_company_root_url) { "http://my-super.subdomain.lvh.me/" }
+  let(:new_company_root_url) { "http://my-super-subdomain.lvh.me/" }
   let(:success_sign_in_text) { "Signed in successfully." }
   let(:new_company_attributes) do
     {
       title: "Super Company",
-      subdomain: "my-super.subdomain",
+      subdomain: "my-super-subdomain",
       owner_full_name: "Chuck Norris",
       owner_email: "chuck_norris@mail.com",
       owner_password: "Super Company"

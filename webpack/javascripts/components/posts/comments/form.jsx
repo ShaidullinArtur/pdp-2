@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import { trim } from "lodash";
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -16,8 +17,9 @@ class CommentForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    if (this.state.text.length == 0) { return; }
-    this.props.onSubmit(this.state.text);
+    const text = trim(this.state.text);
+    if (text.length == 0) { return; }
+    this.props.onSubmit(text);
     this.setState({ text: "" });
   }
 

@@ -5,7 +5,7 @@ class PostDetails extends React.Component {
   render() {
     return (
       <div className="row medium-8 large-7 columns">
-        <div className="post-details column">{this.props.post.text}</div>
+        <div className="post-details text-wraped column">{this.props.post.text}</div>
         {this._actions()}
         <CommentsBox postId={this.props.post.id} canManage={this.props.canManage}/>
       </div>

@@ -62,7 +62,7 @@ class CommentItem extends React.Component {
     if (this.state.editable) { return; }
     return (
       <div className="medium-8 columns">
-        <p>{this.props.text}</p>
+        <p className="text-wraped">{this.props.text}</p>
         <p>{moment(this.props.created_at).format("MM-DD-YYYY HH:mm:ss")}</p>
       </div>
     )

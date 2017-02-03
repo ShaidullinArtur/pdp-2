@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  expose(:companies, -> { Company.includes(:owner).order(created_at: :desc) })
+  expose(:companies, -> { Company.includes(:owner).order(created_at: :desc).page(params[:page]) })
   expose(:company)
 
   def index
