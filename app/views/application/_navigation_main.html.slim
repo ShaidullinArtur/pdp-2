@@ -1,5 +1,8 @@
 .top-bar-left
   ul.menu
-    li = link_to "Rails Base example site", root_path
+    = link_to "Companies", root_url(subdomain: nil)
+    = active_link_to "Blog", root_path,
+      active: :exclusive, wrap_tag: :li
     - if user_signed_in?
-      = active_link_to "Home", root_path, active: :exclusive, wrap_tag: :li
+      = active_link_to "Users", users_path,
+        active: :exclusive, wrap_tag: :li

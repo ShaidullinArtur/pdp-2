@@ -1,6 +1,8 @@
 require "rails_helper"
 
 feature "Password Reset" do
+  let!(:company) { create :company, :with_owner }
+
   let(:new_password) { "qwe123" }
   let(:user) { create :user }
 
@@ -11,6 +13,8 @@ feature "Password Reset" do
   end
 
   scenario "Visitor resets his password" do
+    switch_to_subdomain(company.subdomain)
+
     visit new_user_password_path
 
     fill_in "Enter your email address", with: user.email

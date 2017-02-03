@@ -7,7 +7,7 @@ html class="no-js" lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="robots" content="NOODP,NOYDIR"
 
-    = metamagic site: "RailsBase", title: %i(title site), separator: " - "
+    = metamagic site: "PDP-2", title: %i(title site), separator: " - "
     = csrf_meta_tags
 
     = stylesheet_link_tag :application
@@ -20,12 +20,10 @@ html class="no-js" lang="en"
     = render "navigation"
     = render "messages"
 
-    main.container
+    main
       = yield
-
-    = render "footer"
 
     javascript:
       App.currentUserData = #{{current_user.to_json}};
 
-    = javascript_include_tag :application
+    = javascript_include_tag(*webpack_asset_paths("application"))

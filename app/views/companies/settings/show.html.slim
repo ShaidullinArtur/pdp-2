@@ -1,0 +1,9 @@
+= simple_form_for current_company, url: settings_path do |f|
+  .form-inputs
+    .row
+      .medium-6.columns
+        = f.input :title, autofocus: true
+  .form-actions
+    .row
+      .medium-6.columns
+        = f.submit class: "button"

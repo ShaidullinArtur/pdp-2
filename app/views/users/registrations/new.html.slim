@@ -11,7 +11,7 @@
       legend
         | Create your
         '
-        strong Rails Base example site
+        strong PDP-2 site
         '
         | account
 
@@ -20,6 +20,7 @@
         = f.input :email, required: true
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
+        = f.input :subdomain, as: :hidden, input_html: { value: request.subdomain }
 
       .form-actions
         = f.button :submit, "Sign up"

@@ -1,8 +1,11 @@
 require "rails_helper"
 
 feature "Sign In" do
-  let(:user) { create :user }
-  let(:unconfirmed_user) { create :user, :not_confirmed }
+  let!(:company) { create :company, :with_owner }
+  let(:user) { create :user, subdomain: company.subdomain }
+  let(:unconfirmed_user) { create :user, :not_confirmed, subdomain: company.subdomain }
+
+  background { switch_to_subdomain(company.subdomain) }
 
   def sign_in(email, password)
     visit new_user_session_path

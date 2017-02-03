@@ -1,0 +1,16 @@
+.callout.large.primary
+  .row.column.text-center
+    h2.subheader Companies
+.row.medium-8.large-7.columns.companies-list
+  - companies.each do |company|
+    .panel.callout.radius.company-item data-id=company.id
+      h4.text-wraped
+        ' Company:
+        = link_to company.title, root_url(subdomain: company.subdomain)
+      p
+        ' Owner:
+        = company.owner.full_name
+      p
+        ' Created at:
+        = I18n.l(company.created_at, format: :us_date)
+  = paginate companies

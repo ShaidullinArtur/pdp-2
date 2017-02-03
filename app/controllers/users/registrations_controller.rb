@@ -1,5 +1,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    include CompanyAuthentication
+
     protected
 
     def update_resource(resource, params)

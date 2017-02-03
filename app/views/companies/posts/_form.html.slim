@@ -1,0 +1,16 @@
+= simple_form_for post do |f|
+  .form-inputs
+    .row
+      .medium-6.columns
+        = f.input :title, required: true, autofocus: true, placeholder: "Post title"
+    .row
+      .medium-6.columns
+        = f.input :text, as: :text, required: true, placeholder: "Post text",
+          input_html: { rows: 5 }
+  .form-actions
+    .row
+      .medium-6.columns
+        .button-group
+          = f.submit class: "button"
+          = link_to_if(post.persisted?, "Cancel", { action: "show", id: post.id }, class: "button") do
+            = link_to("Cancel", { action: "index" }, class: "button")
