@@ -44,6 +44,7 @@ class CommentsBox extends React.Component {
           onUpdate={this.updateComment.bind(this)}
           onDelete={this.deleteComment.bind(this)} />
         <LoadMoreButton
+          buttonText="Load more comments"
           lastPage={this.props.lastPage}
           loading={this.props.loading}
           onClick={this.loadComments.bind(this)} />

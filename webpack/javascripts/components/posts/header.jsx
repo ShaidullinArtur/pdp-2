@@ -11,10 +11,11 @@ class PostHeader extends React.Component {
     return (
       <div className="callout large primary">
         <div className="row column text-center">
-          <h1>{this.props.post.title}</h1>
+          <h1 className="text-wraped">{this.props.post.title}</h1>
           <h4 className="subheader">
             <p>Posted by: {this.props.post.author.full_name}</p>
-            <p>Current rating: {this.props.post.rating}</p>
+            {this._currentRating()}
+            <div className="clearfix"/>
             {this._stars()}
           </h4>
         </div>
@@ -22,9 +23,24 @@ class PostHeader extends React.Component {
     )
   }
 
+  _currentRating() {
+    if (this.props.post.rating == 0) { return; }
+    return (
+      <div className="post-current-rating">
+        <span>Current rating:</span>
+        <StarsRatingBox editable={false} value={this.props.post.rating}/>
+      </div>
+    );
+  }
+
   _stars() {
     if (App.currentUserData == null || this.props.post.author.id == App.currentUserData.id) { return; }
-    return <StarsRatingBox onChange={this.changeRating.bind(this)} value={this.props.post.user_rating}/>;
+    return (
+      <div className="post-user-rating">
+        <span>Your rating:</span>
+        <StarsRatingBox onChange={this.changeRating.bind(this)} value={this.props.post.user_rating}/>
+      </div>
+    );
   }
 }
 

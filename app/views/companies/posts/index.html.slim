@@ -4,11 +4,11 @@
 .row.medium-8.large-7.columns.posts-list
   - posts.each do |post|
     .blog-post data-id=post.id
-      h3
+      h3.text-wraped
         = link_to post.title, post_path(post)
         '
         small = I18n.l(post.created_at, format: :us_date)
-      p = post.text
+      p.text-wraped = post.text
       .callout
         ul.menu.simple
           li

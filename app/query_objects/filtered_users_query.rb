@@ -1,5 +1,4 @@
 class FilteredUsersQuery < BaseQuery
-  PER_PAGE = 10
   ALLOWED_PARAMS = %i(min_rating sort search page).freeze
 
   def all
@@ -23,6 +22,6 @@ class FilteredUsersQuery < BaseQuery
   end
 
   def by_page(users, page)
-    users.page(page).per(PER_PAGE)
+    users.page(page)
   end
 end

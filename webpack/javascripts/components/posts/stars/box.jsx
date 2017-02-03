@@ -39,10 +39,11 @@ class StarsRatingBox extends React.Component {
     return (
       times(this.props.count, (i) => {
         const index = i + 1;
+        const value = (this.props.editable) ? this.state.value : this.props.value;
         const props = {
           key: index,
           index: index,
-          active: this.state.value >= index || index <= this.state.hoveredItemIndex,
+          active: value >= index || index <= this.state.hoveredItemIndex,
           editable: this.props.editable,
           onClick: this.setValue.bind(this),
           onMouseOver: this.setHoveredItem.bind(this),
