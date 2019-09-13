@@ -1,0 +1,133 @@
+{
+	"name": "SyncLocationRevenue",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Location Revenue",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "PostgreSqlSource",
+						"query": {
+							"value": "select * from location_revenues\nwhere updated_at between '@{addseconds(trigger().scheduledTime, -90)}'\nAND '@{trigger().scheduledTime}'",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[dbo].[spUpsertLocationRevenue]",
+						"sqlWriterTableType": "LocationRevenueType",
+						"storedProcedureTableTypeParameterName": "location_revenue"
+					},
+					"enableStaging": false,
+					"parallelCopies": 1,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "PPStagingBlob",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "order_number_id",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "order_number_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "updated_at",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "deleted_at",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "StagingLocationRevenues",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "StagingAzureDB",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"startTime": {
+				"type": "string",
+				"defaultValue": "2019-09-13 09:48:46.635229"
+			},
+			"endTime": {
+				"type": "string",
+				"defaultValue": "2019-09-13 09:58:46.635229"
+			},
+			"trigerTime": {
+				"type": "string",
+				"defaultValue": "@trigger().scheduledTime"
+			}
+		},
+		"variables": {
+			"trigerTime1": {
+				"type": "String",
+				"defaultValue": "@trigger().scheduledTime123"
+			}
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

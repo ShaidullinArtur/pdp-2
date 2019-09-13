@@ -1,0 +1,68 @@
+{
+	"name": "StagingAzureDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime2",
+				"scale": 6
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime2",
+				"scale": 6
+			},
+			{
+				"name": "deleted_at",
+				"type": "datetime2",
+				"scale": 6
+			},
+			{
+				"name": "profile_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "commission",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "transaction_type",
+				"type": "varchar"
+			},
+			{
+				"name": "slug",
+				"type": "varchar"
+			},
+			{
+				"name": "kind",
+				"type": "varchar"
+			},
+			{
+				"name": "auth_token",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "providers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

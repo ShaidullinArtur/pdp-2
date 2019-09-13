@@ -1,0 +1,17 @@
+{
+	"name": "StagingProviders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PPStaging",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "providers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,27 @@
+{
+	"name": "1 Minute Sync Location Revenue",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "SyncLocationRevenue",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"startTime": "@trigger().scheduledTime"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2019-09-13T12:30:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

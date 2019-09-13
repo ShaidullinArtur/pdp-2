@@ -1,0 +1,17 @@
+{
+	"name": "StagingLocationRevenues",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PPStaging",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "location_revenues"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
