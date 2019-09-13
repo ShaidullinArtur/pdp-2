@@ -2,7 +2,7 @@
 	"name": "1 Minute Sync Location Revenue",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -19,7 +19,7 @@
 			"recurrence": {
 				"frequency": "Minute",
 				"interval": 1,
-				"startTime": "2019-09-13T12:30:00Z",
+				"startTime": "2019-09-13T12:30:00.000Z",
 				"timeZone": "UTC"
 			}
 		}
