@@ -18,7 +18,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "select * from location_revenues\nwhere updated_at between '@{addseconds(trigger().scheduledTime, -90)}'\nAND '@{trigger().scheduledTime}'",
+							"value": "select * from location_revenues\nwhere updated_at between '@{addseconds(pipeline().parameters.startTime, -90)}'\nAND '@{pipeline().parameters.startTime}'\n",
 							"type": "Expression"
 						}
 					},
@@ -109,22 +109,7 @@
 		],
 		"parameters": {
 			"startTime": {
-				"type": "string",
-				"defaultValue": "2019-09-13 09:48:46.635229"
-			},
-			"endTime": {
-				"type": "string",
-				"defaultValue": "2019-09-13 09:58:46.635229"
-			},
-			"trigerTime": {
-				"type": "string",
-				"defaultValue": "@trigger().scheduledTime"
-			}
-		},
-		"variables": {
-			"trigerTime1": {
-				"type": "String",
-				"defaultValue": "@trigger().scheduledTime123"
+				"type": "string"
 			}
 		},
 		"annotations": []
