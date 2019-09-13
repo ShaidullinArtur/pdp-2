@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "PPStagingFactory"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"PPStaging_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'PPStaging'"
+		},
+		"PPStagingBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'PPStagingBlob'"
+		},
+		"1 Minute Sync Location Revenue_properties_SyncLocationRevenue_parameters_startTime": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"1MinuteSyncProviders_properties_SyncProviders_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"1MinuteSyncProviders_properties_SyncProviders_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas Token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"PPStaging_connectionString": {
+						"value": "[parameters('PPStaging_connectionString')]"
+					},
+					"PPStagingBlob_connectionString": {
+						"value": "[parameters('PPStagingBlob_connectionString')]"
+					},
+					"1 Minute Sync Location Revenue_properties_SyncLocationRevenue_parameters_startTime": {
+						"value": "[parameters('1 Minute Sync Location Revenue_properties_SyncLocationRevenue_parameters_startTime')]"
+					},
+					"1MinuteSyncProviders_properties_SyncProviders_parameters_windowStart": {
+						"value": "[parameters('1MinuteSyncProviders_properties_SyncProviders_parameters_windowStart')]"
+					},
+					"1MinuteSyncProviders_properties_SyncProviders_parameters_windowEnd": {
+						"value": "[parameters('1MinuteSyncProviders_properties_SyncProviders_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

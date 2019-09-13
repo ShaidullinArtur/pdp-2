@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "PPStagingFactory"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"PPStaging_connectionString": {
+			"value": ""
+		},
+		"PPStagingBlob_connectionString": {
+			"value": ""
+		},
+		"1 Minute Sync Location Revenue_properties_SyncLocationRevenue_parameters_startTime": {
+			"value": "@trigger().scheduledTime"
+		},
+		"1MinuteSyncProviders_properties_SyncProviders_parameters_windowStart": {
+			"value": "@trigger().scheduledTime"
+		},
+		"1MinuteSyncProviders_properties_SyncProviders_parameters_windowEnd": {
+			"value": "@trigger().scheduledTime"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
